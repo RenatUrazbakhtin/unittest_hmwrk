@@ -8,7 +8,10 @@ class TestArss(unittest.TestCase):
         with self.assertRaises(IndexError):
             arrs.get([], 0, "test")
 
-
-def test_slice():
-    assert arrs.my_slice([1, 2, 3, 4], 1, 3) == [2, 3]
-    assert arrs.my_slice([1, 2, 3], 1) == [2, 3]
+class TestSlice(unittest.TestCase):
+    def test_slice(self):
+        self.assertEquals(arrs.my_slice([1, 2, 3, 4], 1, 3), [2, 3])
+        self.assertEquals(arrs.my_slice([1, 2, 3], 1), [2, 3])
+        self.assertEquals(arrs.my_slice([1, 2, 3, 4], -3, 2), [2])
+        self.assertEquals(arrs.my_slice([1, 2, 3], -4, 1), [1])
+        self.assertEquals(arrs.my_slice([], 1), [])
