@@ -1,9 +1,12 @@
 from utils import arrs
+import unittest
 
-
-def test_get():
-    assert arrs.get([1, 2, 3], 1, "test") == 3
-    assert arrs.get([], 0, "test") == "test"
+class TestArss(unittest.TestCase):
+    def test_get(self):
+        self.assertEquals(arrs.get([1, 2, 3], 1, "test"), 2)
+        self.assertEquals(arrs.get([1, 2, 3], -1, "test"), "test")
+        with self.assertRaises(IndexError):
+            arrs.get([], 0, "test")
 
 
 def test_slice():
